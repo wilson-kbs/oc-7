@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LES PETITS PLATS</title>
+    <script src="https://kit.fontawesome.com/936f550d2f.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header-page">
+        <div class="header-page__logo">
+          <img src="/images/Logo.svg" alt="logo">
+        </div>
+        <div class="header-page__content">
+          <h1 class="title">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
+          <div class="search">
+            <form class="search__container">
+                <input class="search__input" type="text" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
+                <button class="search__reset" type="reset">
+                  <img src="/images/icons/close.svg" alt="bouton de réinitialisation de recherche">
+                </button>
+                <button class="search__button" type="submit">
+                  <img src="/images/icons/search.svg" alt="image d'arrière plan">
+                </button>
+            </form>
+          </div>
+        </div>
+      </header>
+      <main class="main-page">
+        <div class="toolbar">
+          <div class="filters">
+            <div class="filters__tags" data-type="ingredients">
+              <div class="tags-selector">
+                <div class="tags-selector__wrapper">
+                  <div class="tags-selector__header">
+                    <span class="title">Ingredients</span>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="tags-selector__content">
+                    <div class="search">
+                      <form class="search__container">
+                        <input class="search__input" type="text" name="search">
+                        <button class="search__reset" type="reset">
+                          <img src="/images/icons/close.svg" alt="bouton de réinitialisation de recherche">
+                        </button>
+                        <button class="search__button" type="submit">
+                          <img src="/images/icons/search-tag.svg" alt="bouton de recherche de tag">
+                        </button>
+                      </form>
+                    </div>
+                    <ul class="tags">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="tags-selected">
+              </div>
+            </div>
+            <div class="filters__tags" data-type="appliance">
+              <div class="tags-selector">
+                <div class="tags-selector__wrapper">
+                  <div class="tags-selector__header">
+                    <span class="title">Appareils</span>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="tags-selector__content">
+                    <div class="search">
+                      <form class="search__container">
+                        <input class="search__input" type="text" name="search">
+                        <button class="search__reset" type="reset">
+                          <img src="/images/icons/close.svg" alt="bouton de réinitialisation de recherche">
+                        </button>
+                        <button class="search__button" type="submit">
+                          <img src="/images/icons/search-tag.svg" alt="bouton de recherche de tag">
+                        </button>
+                      </form>
+                    </div>
+                    <ul class="tags">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="tags-selected"></div>
+            </div>
+            <div class="filters__tags" data-type="ustensils">
+              <div class="tags-selector">
+                <div class="tags-selector__wrapper">
+                  <div class="tags-selector__header">
+                    <span class="title">Ustensiles</span>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="tags-selector__content">
+                    <div class="search">
+                      <form class="search__container">
+                        <input class="search__input" type="text" name="search">
+                        <button class="search__reset" type="reset">
+                          <img src="/images/icons/close.svg" alt="bouton de réinitialisation de recherche">
+                        </button>
+                        <button class="search__button" type="submit">
+                          <img src="/images/icons/search-tag.svg" alt="bouton de recherche de tag">
+                        </button>
+                      </form>
+                    </div>
+                    <ul class="tags">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="tags-selected"></div>
+            </div>
+          </div>
+          <span class="filter-count">
+            <span id="recipes-count">0</span>&nbsp;recettes
+          </span>
+        </div>
+        <div id="recipes-view"></div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
