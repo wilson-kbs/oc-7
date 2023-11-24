@@ -21,7 +21,6 @@ export class RecipesView {
 		const result = data.map((recipe) => {
 			return `
 				<div class="recipe-card">
-				  
 					<div class="recipe-card-image">
 						<img src="/images/recipes/small/${recipe.image}" alt="${recipe.name}" />
 					</div>
