@@ -2,7 +2,7 @@ import {capitalize} from "../utils/capitalize.ts";
 
 type Tag = string
 export class TagsView {
-	private _elContainer: HTMLDivElement;
+	private readonly _elContainer: HTMLDivElement;
 	private _elSelector: HTMLDivElement;
 	private _elSelected: HTMLDivElement;
 	constructor(selector: string | HTMLDivElement) {
