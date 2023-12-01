@@ -14,6 +14,11 @@ type SearchRecipesParams = {
 
 export function searchRecipes(data: Recipe[], { input, tags: filters }: SearchRecipesParams): Recipe[] {
 	const normalizedInput = normalize(input);
+	const normalizedFilters: Required<Filters> = {
+		ingredients: filters.ingredients?.map(normalize) ?? [],
+		appliance: filters.appliance?.map(normalize) ?? [],
+		ustensils: filters.ustensils?.map(normalize) ?? [],
+	}
 
 	return data.reduce<Recipe[]>((arr, recipe) => {
 		let validText = false;
@@ -26,23 +31,23 @@ export function searchRecipes(data: Recipe[], { input, tags: filters }: SearchRe
 		const ingredientsState = recipe.ingredients.reduce((acc, ingredient) => {
 			return {
 				validText: acc.validText || normalize(ingredient.ingredient).includes(normalizedInput),
-				validFilterCount: acc.validFilterCount + (filters.ingredients?.some(filter => normalize(ingredient.ingredient) === normalize(filter)) ? 1 : 0),
+				validFilterCount: acc.validFilterCount + (normalizedFilters.ingredients?.some(filter =>  filter === normalize(ingredient.ingredient)) ? 1 : 0),
 			}
 		}, {validText, validFilterCount: 0});
 
 		if (ingredientsState.validText)
 			validText = true;
 
-		if (ingredientsState.validFilterCount !== filters.ingredients?.length)
+		if (ingredientsState.validFilterCount !== normalizedFilters.ingredients.length)
 			return arr;
 
-		if (filters.appliance && filters.appliance.length > 0)
-			if (!filters.appliance.some(filter => normalize(recipe.appliance) === normalize(filter)))
+		if (normalizedFilters.appliance.length > 0)
+			if (!normalizedFilters.appliance.some(filter => filter === normalize(recipe.appliance)))
 				return arr;
 
 
-		if (filters.ustensils && filters.ustensils.length > 0)
-			if (!filters.ustensils.every(filter => recipe.ustensils.some(ustensil => normalize(ustensil) === normalize(filter.toLowerCase()))))
+		if (normalizedFilters.ustensils.length > 0)
+			if (!normalizedFilters.ustensils.every(filter => recipe.ustensils.some(ustensil => normalize(ustensil) === filter)))
 				return arr;
 
 		if (validText)
