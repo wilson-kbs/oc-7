@@ -16,12 +16,15 @@ jobs:
           node-version: '20'
 
       - run: npm install
-      - run: npm run build
+      - run: npm run build -- --outDir _site
 
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "_site/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./dist  # Le chemin du dossier build, 'dist' de Vite.js
 
   deploy:
     needs: build
