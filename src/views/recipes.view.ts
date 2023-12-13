@@ -19,10 +19,11 @@ export class RecipesView {
 		}
 		this.domNode.removeAttribute('data-view');
 		const result = data.map((recipe) => {
+			const imgUrl = new URL(`/public/images/recipes/small/${recipe.image}`, import.meta.url).href
 			return `
 				<div class="recipe-card">
 					<div class="recipe-card-image">
-						<img src="/images/recipes/small/${recipe.image}" alt="${recipe.name}" />
+						<img src="${imgUrl}" alt="${recipe.name}" />
 					</div>
 					<div class="recipe-card-content">
 						<h3>${recipe.name}</h3>
