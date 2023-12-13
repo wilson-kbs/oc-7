@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
+    "@types/web": "^0.0.127",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }
